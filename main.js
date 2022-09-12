@@ -15,3 +15,17 @@ button.addEventListener("click", () => {
     }
   });
 });
+
+let notification;
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    notification = new Notification("Please come back", {
+      body: "Please come back, baby come back",
+      tag: "Come back",
+    });
+  } else {
+    if (notification !== undefined) {
+      notification.close();
+    }
+  }
+});
