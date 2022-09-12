@@ -6,12 +6,11 @@ button.addEventListener("click", () => {
       const notification = new Notification("Example notification", {
         body: "This is body text",
         data: { hello: "world" },
+        icon: "randoIcon.png",
       });
 
-      console.log(notification);
-
-      notification.data.addEventListener("close", (e) => {
-        console.log(e);
+      notification.addEventListener("error", (e) => {
+        alert("error");
       });
     }
   });
