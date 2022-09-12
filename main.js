@@ -21,7 +21,7 @@ let interval;
 document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
     const leavingDate = new Date();
-    setInterval(() => {
+    interval = setInterval(() => {
       notification = new Notification("Please come back", {
         body: `You have been gone for ${Math.round(
           (new Date() - leavingDate) / 1000
@@ -30,8 +30,7 @@ document.addEventListener("visibilitychange", () => {
       });
     }, 100);
   } else {
-    if (notification !== undefined) {
-      notification.close();
-    }
+    if (interval) clearInterval(interval);
+    if (notification) notification.close();
   }
 });
